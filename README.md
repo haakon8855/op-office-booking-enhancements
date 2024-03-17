@@ -17,7 +17,7 @@ This is achieved by injecting JavaScript into the webpage.
 The extension is written for Google Chrome using manifest version 3, and the file structure
 is as follows:
 
-```
+```text
 op-office-booking-screen-enhancement-suite/
 ├── images/
 │   ├── icon16.png
@@ -83,8 +83,8 @@ as an unpacked extension:
    where you put it, so long as it is not deleted.
 2. Go to the Extensions page by entering `chrome://extensions` in a new tab.  
    (Or, click the Chrome menu, hover over More Tools, then select Extensions.)
-3. Enable *Developer Mode* by clicking the toggle switch next to Developer mode.
-4. Click the *Load unpacked* button and select the extension directory
+3. Enable _Developer Mode_ by clicking the toggle switch next to Developer mode.
+4. Click the _Load unpacked_ button and select the extension directory
 
 ## Notes
 
