@@ -1,4 +1,4 @@
-# OP Office Booking Enhancements Chrome Extension <!-- omit in toc -->
+# OP Office Booking Enhancement Suite <!-- omit in toc -->
 
 - [Description](#description)
 - [Installation](#installation)
@@ -18,7 +18,7 @@ The extension is written for Google Chrome using manifest version 3, and the fil
 is as follows:
 
 ```
-op-office-booking-screen-enhancements/
+op-office-booking-screen-enhancement-suite/
 ├── images/
 │   ├── icon16.png
 │   ├── icon32.png
@@ -26,6 +26,7 @@ op-office-booking-screen-enhancements/
 │   ├── icon128.png
 │   └── thumbnail.png
 ├── applyNoZoom.js ............... Disable zoom and show whole office at once
+├── applyLargeMap.js ............. Increase size of the office map
 ├── applyDefaultDay.js ........... Set default day to next workday
 ├── background.js ................ Runs when extension is installed
 ├── button.css ................... Styling of extension menu
@@ -47,7 +48,7 @@ op-office-booking-screen-enhancements/
    A new menu will appear at the top of the screen.
 6. Click on _Load unpacked_ at the top and navigate to the location you extracted the extension to.
 7. Finally, select the folder containing `manifest.json` (most likely the folder named
-   `op-office-booking-enhancements`) to install the extension.
+   `op-office-booking-enhancement-suite`) to install the extension.
 
 ## Usage
 
@@ -67,6 +68,7 @@ nothing will happen when opening the office booking website.
 
 - **Disable zooming:** Disables the zoom functionality and shows all available seats in the
   office at once.
+- **Larger map:** Makes the office map a little larger. (May be unstable on smaller screens)
 - **Default to next workday:** Automatically select the next workday when loading the page.
 
 ## Download and Install

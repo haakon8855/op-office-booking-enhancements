@@ -1,6 +1,6 @@
 // This code is run in the terminal of the website to remove zoom buttons
 
-const zoomRepeater = setInterval(() => {
+largeMapRepeater = setInterval(() => {
   try {
     console.log("Trying to remove zoom");
 
@@ -38,15 +38,11 @@ const zoomRepeater = setInterval(() => {
     Array.from(seats).forEach((seat) => {
       seat.classList = [""];
     });
-
-    // Make the office map larger
-    let main = document.querySelector('[height="500"]');
-    main.style.height = "800";
   } catch (error) {
     console.log("Applying no zoom failed. Retrying");
   }
 }, 100);
 
 setTimeout(() => {
-  clearInterval(zoomRepeater);
+  clearInterval(largeMapRepeater);
 }, 2000);

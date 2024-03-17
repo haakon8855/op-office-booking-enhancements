@@ -1,8 +1,8 @@
 // This code is run in the terminal of the website to set selected day to next workday
 
-let weekdays = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag"];
+weekdays = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag"];
 
-const dayRepeater = setInterval(() => {
+dayRepeater = setInterval(() => {
   try {
     console.log("Trying to set selected day");
 

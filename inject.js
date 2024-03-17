@@ -18,6 +18,11 @@ const handleUpdateNoZoom = (enableNoZoom) => {
     injectScript(chrome.runtime.getURL("applyNoZoom.js"), "body");
 };
 
+const handleUpdateLargeMap = (enableLargeMap) => {
+  if (enableLargeMap)
+    injectScript(chrome.runtime.getURL("applyLargeMap.js"), "body");
+};
+
 const handleUpdateDefaultDay = (enableDefaultDay) => {
   if (enableDefaultDay)
     injectScript(chrome.runtime.getURL("applyDefaultDay.js"), "body");
@@ -27,6 +32,9 @@ const handleUpdateDefaultDay = (enableDefaultDay) => {
 chrome.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   handleUpdateNoZoom(enableNoZoom);
 });
+chrome.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+  handleUpdateLargeMap(enableLargeMap);
+});
 chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   handleUpdateDefaultDay(enableDefaultDay);
 });
@@ -35,6 +43,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
   for (let [key, { _oldValue, newValue }] of Object.entries(changes)) {
     if (key == "enableNoZoom") {
       handleUpdateNoZoom(newValue);
+    } else if (key == "enableLargeMap") {
+      handleUpdateLargeMap(newValue);
     } else if (key == "enableDefaultDay") {
       handleUpdateDefaultDay(newValue);
     }

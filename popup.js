@@ -1,6 +1,9 @@
 const toggleButtonNoZoom = document.getElementById("toggleNoZoom");
 const sliderNoZoom = document.getElementById("sliderElemNoZoom");
 
+const toggleButtonLargeMap = document.getElementById("toggleLargeMap");
+const sliderLargeMap = document.getElementById("sliderElemLargeMap");
+
 const toggleButtonDefaultDay = document.getElementById(
   "toggleEnableDefaultDay"
 );
@@ -9,6 +12,11 @@ const sliderDefaultDay = document.getElementById("sliderElemDefaultDay");
 const updateSliderNoZoom = (enableNoZoom) => {
   // Update the state of the no zoom slider button
   toggleButtonNoZoom.checked = enableNoZoom;
+};
+
+const updateSliderLargeMap = (enableLargeMap) => {
+  // Update the state of the no zoom slider button
+  toggleButtonLargeMap.checked = enableLargeMap;
 };
 
 const updateSliderDefaultDay = (enableDefaultDay) => {
@@ -20,6 +28,9 @@ const updateSliderDefaultDay = (enableDefaultDay) => {
 chrome.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   updateSliderNoZoom(enableNoZoom);
 });
+chrome.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+  updateSliderLargeMap(enableLargeMap);
+});
 chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   updateSliderDefaultDay(enableDefaultDay);
 });
@@ -29,6 +40,7 @@ chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
 // A small delay was therefore added.
 setTimeout(() => {
   sliderNoZoom.classList.add("sliderAnim");
+  sliderLargeMap.classList.add("sliderAnim");
   sliderDefaultDay.classList.add("sliderAnim");
 }, 100);
 
@@ -39,6 +51,13 @@ toggleButtonNoZoom.addEventListener("click", async () => {
     enableNoZoom = !enableNoZoom;
     chrome.storage.sync.set({ enableNoZoom });
     updateSliderNoZoom(enableNoZoom);
+  });
+});
+toggleButtonLargeMap.addEventListener("click", async () => {
+  chrome.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+    enableLargeMap = !enableLargeMap;
+    chrome.storage.sync.set({ enableLargeMap });
+    updateSliderLargeMap(enableLargeMap);
   });
 });
 toggleButtonDefaultDay.addEventListener("click", async () => {
