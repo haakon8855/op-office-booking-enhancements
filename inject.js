@@ -47,12 +47,18 @@ chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
   for (let [key, { _oldValue, newValue }] of Object.entries(changes)) {
-    if (key == "enableNoZoom") {
-      handleUpdateNoZoom(newValue);
-    } else if (key == "enableLargeMap") {
-      handleUpdateLargeMap(newValue);
-    } else if (key == "enableDefaultDay") {
-      handleUpdateDefaultDay(newValue);
+    switch (key) {
+      case "enableNoZoom":
+        handleUpdateNoZoom(newValue);
+        break;
+      case "enableLargeMap":
+        handleUpdateLargeMap(newValue);
+        break;
+      case "enableDefaultDay":
+        handleUpdateDefaultDay(newValue);
+        break;
+      default:
+        break;
     }
   }
 });
