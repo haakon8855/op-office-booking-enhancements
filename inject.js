@@ -15,17 +15,23 @@ const injectScript = (file_path, tag) => {
 
 const handleUpdateNoZoom = (enableNoZoom) => {
   if (enableNoZoom)
-    injectScript(chrome.runtime.getURL("applyNoZoom.js"), "body");
+    injectScript(chrome.runtime.getURL("/enhancements/applyNoZoom.js"), "body");
 };
 
 const handleUpdateLargeMap = (enableLargeMap) => {
   if (enableLargeMap)
-    injectScript(chrome.runtime.getURL("applyLargeMap.js"), "body");
+    injectScript(
+      chrome.runtime.getURL("/enhancements/applyLargeMap.js"),
+      "body"
+    );
 };
 
 const handleUpdateDefaultDay = (enableDefaultDay) => {
   if (enableDefaultDay)
-    injectScript(chrome.runtime.getURL("applyDefaultDay.js"), "body");
+    injectScript(
+      chrome.runtime.getURL("/enhancements/applyDefaultDay.js"),
+      "body"
+    );
 };
 
 // Set initial values on load

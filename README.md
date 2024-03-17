@@ -25,9 +25,10 @@ op-office-booking-screen-enhancement-suite/
 │   ├── icon48.png
 │   ├── icon128.png
 │   └── thumbnail.png
-├── applyNoZoom.js ............... Disable zoom and show whole office at once
-├── applyLargeMap.js ............. Increase size of the office map
-├── applyDefaultDay.js ........... Set default day to next workday
+├── enhancements/
+│   └── applyNoZoom.js ........... Disable zoom and show whole office at once
+│   └── applyLargeMap.js ......... Increase size of the office map
+│   └── applyDefaultDay.js ....... Set default day to next workday
 ├── background.js ................ Runs when extension is installed
 ├── button.css ................... Styling of extension menu
 ├── inject.js .................... Code used to inject applyNoZoom.js and applyDefaultDay.js

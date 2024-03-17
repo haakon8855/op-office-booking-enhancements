@@ -33,7 +33,11 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["applyNoZoom.js", "applyLargeMap.js", "applyDefaultDay.js"],
+      "resources": [
+        "/enhancements/applyNoZoom.js",
+        "/enhancements/applyLargeMap.js",
+        "/enhancements/applyDefaultDay.js"
+      ],
       "matches": [
         "*://app-officebooking.azurewebsites.net.com/*",
         "*://officebooking.omegapoint.no/*"
