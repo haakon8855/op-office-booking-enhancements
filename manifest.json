@@ -25,7 +25,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://app-officebooking.azurewebsites.net.com/*",
+        "*://app-officebooking.azurewebsites.net/*",
         "*://officebooking.omegapoint.no/*"
       ],
       "js": ["inject.js"]
