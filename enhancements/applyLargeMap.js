@@ -5,7 +5,7 @@ zoomRepeater = setInterval(() => {
     // Make the office map larger
     console.log("Trying to increase map size");
     let main = document.querySelector('[height="500"]');
-    main.style.height = "800";
+    main.height.baseVal.value = "800";
   } catch (error) {
     console.log("Applying no zoom failed. Retrying");
   }

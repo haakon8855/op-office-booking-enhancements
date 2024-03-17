@@ -3,6 +3,7 @@ body {
   background-color: #171d21;
   color: #ffffff;
   margin: 15px;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* The switch - the box around the slider */

@@ -1,13 +1,18 @@
 {
+  "manifest_version": 2,
   "name": "OP Office Booking Enhancement Suite",
   "description": "",
   "version": "1.0.2",
-  "manifest_version": 3,
+  "applications": {
+    "gecko": {
+      "id": "office-booking-enhancement-suite@haakon8855"
+    }
+  },
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"]
   },
   "permissions": ["storage"],
-  "action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "/images/icon16.png",
@@ -25,23 +30,15 @@
   "content_scripts": [
     {
       "matches": [
-        "*://app-officebooking.azurewebsites.net.com/*",
+        "*://app-officebooking.azurewebsites.net/*",
         "*://officebooking.omegapoint.no/*"
       ],
       "js": ["inject.js"]
     }
   ],
   "web_accessible_resources": [
-    {
-      "resources": [
-        "/enhancements/applyNoZoom.js",
-        "/enhancements/applyLargeMap.js",
-        "/enhancements/applyDefaultDay.js"
-      ],
-      "matches": [
-        "*://app-officebooking.azurewebsites.net.com/*",
-        "*://officebooking.omegapoint.no/*"
-      ]
-    }
+    "/enhancements/applyNoZoom.js",
+    "/enhancements/applyLargeMap.js",
+    "/enhancements/applyDefaultDay.js"
   ]
 }

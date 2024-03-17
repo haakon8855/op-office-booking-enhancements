@@ -25,13 +25,13 @@ const updateSliderDefaultDay = (enableDefaultDay) => {
 };
 
 // Set the slider buttons to the states stored in storage
-chrome.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
+browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   updateSliderNoZoom(enableNoZoom);
 });
-chrome.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
   updateSliderLargeMap(enableLargeMap);
 });
-chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
+browser.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   updateSliderDefaultDay(enableDefaultDay);
 });
 
@@ -47,23 +47,23 @@ setTimeout(() => {
 // Add the event listener to the slider checkbox in order to store the updated
 // state in storage.
 toggleButtonNoZoom.addEventListener("click", async () => {
-  chrome.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
+  browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
     enableNoZoom = !enableNoZoom;
-    chrome.storage.sync.set({ enableNoZoom });
+    browser.storage.sync.set({ enableNoZoom });
     updateSliderNoZoom(enableNoZoom);
   });
 });
 toggleButtonLargeMap.addEventListener("click", async () => {
-  chrome.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+  browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
     enableLargeMap = !enableLargeMap;
-    chrome.storage.sync.set({ enableLargeMap });
+    browser.storage.sync.set({ enableLargeMap });
     updateSliderLargeMap(enableLargeMap);
   });
 });
 toggleButtonDefaultDay.addEventListener("click", async () => {
-  chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
+  browser.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
     enableDefaultDay = !enableDefaultDay;
-    chrome.storage.sync.set({ enableDefaultDay });
+    browser.storage.sync.set({ enableDefaultDay });
     updateSliderDefaultDay(enableDefaultDay);
   });
 });

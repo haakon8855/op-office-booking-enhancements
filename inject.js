@@ -15,13 +15,16 @@ const injectScript = (file_path, tag) => {
 
 const handleUpdateNoZoom = (enableNoZoom) => {
   if (enableNoZoom)
-    injectScript(chrome.runtime.getURL("/enhancements/applyNoZoom.js"), "body");
+    injectScript(
+      browser.runtime.getURL("/enhancements/applyNoZoom.js"),
+      "body"
+    );
 };
 
 const handleUpdateLargeMap = (enableLargeMap) => {
   if (enableLargeMap)
     injectScript(
-      chrome.runtime.getURL("/enhancements/applyLargeMap.js"),
+      browser.runtime.getURL("/enhancements/applyLargeMap.js"),
       "body"
     );
 };
@@ -29,23 +32,23 @@ const handleUpdateLargeMap = (enableLargeMap) => {
 const handleUpdateDefaultDay = (enableDefaultDay) => {
   if (enableDefaultDay)
     injectScript(
-      chrome.runtime.getURL("/enhancements/applyDefaultDay.js"),
+      browser.runtime.getURL("/enhancements/applyDefaultDay.js"),
       "body"
     );
 };
 
 // Set initial values on load
-chrome.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
+browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   handleUpdateNoZoom(enableNoZoom);
 });
-chrome.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
   handleUpdateLargeMap(enableLargeMap);
 });
-chrome.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
+browser.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   handleUpdateDefaultDay(enableDefaultDay);
 });
 
-chrome.storage.onChanged.addListener(function (changes, namespace) {
+browser.storage.onChanged.addListener(function (changes, namespace) {
   for (let [key, { _oldValue, newValue }] of Object.entries(changes)) {
     switch (key) {
       case "enableNoZoom":
