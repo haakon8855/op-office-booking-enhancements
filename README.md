@@ -5,7 +5,8 @@
 - [Usage](#usage)
   - [Basic use](#basic-use)
   - [Extension menu](#extension-menu)
-- [Download](#download)
+  - [Enhancements](#enhancements)
+- [Download and Install](#download-and-install)
 - [Notes](#notes)
 
 ## Description
@@ -24,8 +25,8 @@ op-office-booking-screen-enhancements/
 │   ├── icon48.png
 │   ├── icon128.png
 │   └── thumbnail.png
-├── applyNoZoom.js ................... Disable zoom code to be injected into dashboard # TODO
-├── applyDefaultDay.js ................ Set default day to next workday
+├── applyNoZoom.js ............... Disable zoom and show whole office at once
+├── applyDefaultDay.js ........... Set default day to next workday
 ├── background.js ................ Runs when extension is installed
 ├── button.css ................... Styling of extension menu
 ├── inject.js .................... Code used to inject applyNoZoom.js and applyDefaultDay.js
@@ -60,15 +61,28 @@ By opening the extension menu by clicking on the extension in the upper right co
 browser, it is possible to toggle the extension functionalities on or off. When turned off,
 nothing will happen when opening the office booking website.
 
-TODO: add enhancements
-
-TODO: update image
 ![Image of extension menu](/images/thumbnail.png)
 
-## Download
+### Enhancements
 
-TODO: create release
-The extension can be downloaded from the [release page]().
+- **Disable zooming:** Disables the zoom functionality and shows all available seats in the
+  office at once.
+- **Default to next workday:** Automatically select the next workday when loading the page.
+
+## Download and Install
+
+The extension can be downloaded from the
+[releases page](https://github.com/haakon8855/op-office-booking-enhancement-suite/releases/).
+
+To install the extension, one must turn on developer mode in Google Chrome and load the extension
+as an unpacked extension:
+
+1. Unzip the downloaded extension. As we will be loading the extension manually it does not matter
+   where you put it, so long as it is not deleted.
+2. Go to the Extensions page by entering `chrome://extensions` in a new tab.  
+   (Or, click the Chrome menu, hover over More Tools, then select Extensions.)
+3. Enable *Developer Mode* by clicking the toggle switch next to Developer mode.
+4. Click the *Load unpacked* button and select the extension directory
 
 ## Notes
 
