@@ -1,21 +1,22 @@
 # OP Office Booking Enhancement Suite <!-- omit in toc -->
 
 - [Description](#description)
-- [Installation](#installation)
+- [Download and Installation](#download-and-installation)
+  - [Chromium](#chromium)
+  - [Firefox](#firefox)
 - [Usage](#usage)
   - [Basic use](#basic-use)
   - [Extension menu](#extension-menu)
   - [Enhancements](#enhancements)
-- [Download and Install](#download-and-install)
 - [Notes](#notes)
 
 ## Description
 
-This chrome extension add quality of life changes to the Omegapoint Office Booking site.
+This browser extension add quality of life changes to the Omegapoint Office Booking site.
 This is achieved by injecting JavaScript into the webpage.
 
-The extension is written for Google Chrome using manifest version 3, and the file structure
-is as follows:
+The extension is written for Chromium (manifest v3) and Firefox (manifest v2),
+and the file structure is as follows:
 
 ```text
 op-office-booking-screen-enhancement-suite/
@@ -32,14 +33,22 @@ op-office-booking-screen-enhancement-suite/
 ├── background.js ................ Runs when extension is installed
 ├── button.css ................... Styling of extension menu
 ├── inject.js .................... Code used to inject applyNoZoom.js and applyDefaultDay.js
-├── manifest.json ................ Chrome Extension Manifest File
+├── manifest.json ................ Browser extension manifest file
 ├── popup.html ................... HTML of extension menu
 ├── popup.js ..................... Code of extension menu
 ├── LICENSE ...................... License
 └── README.md .................... Readme
 ```
 
-## Installation
+## Download and Installation
+
+__Disclaimer:__ This extension is not verified by the Chrome Web Store or Firefox Addons,
+continue at your own risk.
+
+The extension can be downloaded from the
+[releases page](https://github.com/haakon8855/op-office-booking-enhancement-suite/releases/).
+
+### Chromium
 
 1. Download the .zip containing the extension via the link below
 2. Extract the zipped extension to any folder
@@ -50,6 +59,19 @@ op-office-booking-screen-enhancement-suite/
 6. Click on _Load unpacked_ at the top and navigate to the location you extracted the extension to.
 7. Finally, select the folder containing `manifest.json` (most likely the folder named
    `op-office-booking-enhancement-suite`) to install the extension.
+
+### Firefox
+
+__Important:__ To load custom extension in Firefox, you will need to have either
+Firefox Dev Edition or Firefox Nightly.
+
+1. Download the .zip containing the extension via the link below
+2. Open Firefox (Nightly or Dev) and enter `about:config` in the URL field.
+3. Search for `xpinstall.signatures.required` and set it to `false`. This enables you to install
+   unverified extensions.
+4. Navigate to `about:addons` and drag-and-drop the zipped extension into the addons menu.
+   You shold be prompted with a box asking you to verify if you want to continue the installation
+   or not. When you click allow, you are good to go.
 
 ## Usage
 
@@ -67,25 +89,10 @@ nothing will happen when opening the office booking website.
 
 ### Enhancements
 
-- **Disable zooming:** Disables the zoom functionality and shows all available seats in the
+- __Disable zooming:__ Disables the zoom functionality and shows all available seats in the
   office at once.
-- **Larger map:** Makes the office map a little larger. (May be unstable on smaller screens)
-- **Default to next workday:** Automatically select the next workday when loading the page.
-
-## Download and Install
-
-The extension can be downloaded from the
-[releases page](https://github.com/haakon8855/op-office-booking-enhancement-suite/releases/).
-
-To install the extension, one must turn on developer mode in Google Chrome and load the extension
-as an unpacked extension:
-
-1. Unzip the downloaded extension. As we will be loading the extension manually it does not matter
-   where you put it, so long as it is not deleted.
-2. Go to the Extensions page by entering `chrome://extensions` in a new tab.  
-   (Or, click the Chrome menu, hover over More Tools, then select Extensions.)
-3. Enable _Developer Mode_ by clicking the toggle switch next to Developer mode.
-4. Click the _Load unpacked_ button and select the extension directory
+- __Larger map:__ Makes the office map a little larger. (May be unstable on smaller screens)
+- __Default to next workday:__ Automatically select the next workday when loading the page.
 
 ## Notes
 
