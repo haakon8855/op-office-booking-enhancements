@@ -99,7 +99,7 @@ input:checked + .slider:before {
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 80%;
+  left: 55px;
   margin-left: -60px;
 
   /* Fade in tooltip */

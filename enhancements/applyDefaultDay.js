@@ -11,15 +11,15 @@ dayRepeater = setInterval(() => {
     buttons = Array.from(buttons).filter((button) =>
       weekdays.some((day) => button.innerHTML.includes(day))
     );
-    // check if last button contains class text-white
+    // Check if last button contains class text-white
     if (buttons[buttons.length - 1].classList.contains("text-white")) {
       clearInterval(dayRepeater);
     }
 
-    // click last button in list
+    // Click last button in list
     buttons[buttons.length - 1].click();
   } catch (error) {
-    console.log("Applying no zoom failed. Retrying");
+    console.log("Applying default next workday failed. Retrying");
   }
 }, 100);
 
