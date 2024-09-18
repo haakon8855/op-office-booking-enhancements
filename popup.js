@@ -9,6 +9,9 @@ const toggleButtonDefaultDay = document.getElementById(
 );
 const sliderDefaultDay = document.getElementById("sliderElemDefaultDay");
 
+const toggleButtonKeybinds = document.getElementById("toggleEnableKeybinds");
+const sliderKeybinds = document.getElementById("sliderElemKeybinds");
+
 const updateSliderNoZoom = (enableNoZoom) => {
   // Update the state of the no zoom slider button
   toggleButtonNoZoom.checked = enableNoZoom;
@@ -24,6 +27,11 @@ const updateSliderDefaultDay = (enableDefaultDay) => {
   toggleButtonDefaultDay.checked = enableDefaultDay;
 };
 
+const updateSliderKeybinds = (enableKeybinds) => {
+  // Update the state of the Keybinds slider button
+  toggleButtonKeybinds.checked = enableKeybinds;
+};
+
 // Set the slider buttons to the states stored in storage
 browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   updateSliderNoZoom(enableNoZoom);
@@ -34,6 +42,9 @@ browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
 browser.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   updateSliderDefaultDay(enableDefaultDay);
 });
+browser.storage.sync.get("enableKeybinds", ({ enableKeybinds }) => {
+  updateSliderKeybinds(enableKeybinds);
+});
 
 // Add the transition animation after correct state has been set.
 // For some reason it did not work by simply adding the class right away.
@@ -42,6 +53,7 @@ setTimeout(() => {
   sliderNoZoom.classList.add("sliderAnim");
   sliderLargeMap.classList.add("sliderAnim");
   sliderDefaultDay.classList.add("sliderAnim");
+  sliderKeybinds.classList.add("sliderAnim");
 }, 100);
 
 // Add the event listener to the slider checkbox in order to store the updated
@@ -65,5 +77,12 @@ toggleButtonDefaultDay.addEventListener("click", async () => {
     enableDefaultDay = !enableDefaultDay;
     browser.storage.sync.set({ enableDefaultDay });
     updateSliderDefaultDay(enableDefaultDay);
+  });
+});
+toggleButtonKeybinds.addEventListener("click", async () => {
+  browser.storage.sync.get("enableKeybinds", ({ enableKeybinds }) => {
+    enableKeybinds = !enableKeybinds;
+    browser.storage.sync.set({ enableKeybinds });
+    updateSliderKeybinds(enableKeybinds);
   });
 });

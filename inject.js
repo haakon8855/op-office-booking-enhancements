@@ -37,6 +37,14 @@ const handleUpdateDefaultDay = (enableDefaultDay) => {
     );
 };
 
+const handleUpdateKeybinds = (enableKeybinds) => {
+  if (enableKeybinds)
+    injectScript(
+      browser.runtime.getURL("/enhancements/applyKeybinds.js"),
+      "body"
+    );
+};
+
 // Set initial values on load
 browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   handleUpdateNoZoom(enableNoZoom);
@@ -46,6 +54,9 @@ browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
 });
 browser.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   handleUpdateDefaultDay(enableDefaultDay);
+});
+browser.storage.sync.get("enableKeybinds", ({ enableKeybinds }) => {
+  handleUpdateKeybinds(enableKeybinds);
 });
 
 browser.storage.onChanged.addListener(function (changes, namespace) {
@@ -59,6 +70,9 @@ browser.storage.onChanged.addListener(function (changes, namespace) {
         break;
       case "enableDefaultDay":
         handleUpdateDefaultDay(newValue);
+        break;
+      case "enableKeybinds":
+        handleUpdateKeybinds(newValue);
         break;
       default:
         break;

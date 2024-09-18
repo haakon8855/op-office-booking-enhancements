@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "OP Office Booking Enhancement Suite",
   "description": "",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "applications": {
     "gecko": {
       "id": "office-booking-enhancement-suite@haakon8855"
