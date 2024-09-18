@@ -1,7 +1,6 @@
 // Add quality of life keybinds to office booking website
 
 document.addEventListener("keydown", (event) => {
-  console.log(event.key);
   switch (event.key) {
     case "Escape":
       [...document.getElementsByTagName("button")]

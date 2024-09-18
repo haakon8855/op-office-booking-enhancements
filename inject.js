@@ -37,6 +37,14 @@ const handleUpdateLargeMap = (enableLargeMap) => {
     );
 };
 
+const handleUpdateNameTags = (enableNameTags) => {
+  if (enableNameTags)
+    injectScript(
+      browser.runtime.getURL("/enhancements/applyNameTags.js"),
+      "body"
+    );
+};
+
 const handleUpdateNoZoom = (enableNoZoom) => {
   if (enableNoZoom)
     injectScript(
@@ -55,6 +63,9 @@ browser.storage.sync.get("enableKeybinds", ({ enableKeybinds }) => {
 browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
   handleUpdateLargeMap(enableLargeMap);
 });
+browser.storage.sync.get("enableNameTags", ({ enableNameTags }) => {
+  handleUpdateNameTags(enableNameTags);
+});
 browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   handleUpdateNoZoom(enableNoZoom);
 });
@@ -70,6 +81,9 @@ browser.storage.onChanged.addListener(function (changes, namespace) {
         break;
       case "enableLargeMap":
         handleUpdateLargeMap(newValue);
+        break;
+      case "enableNameTags":
+        handleUpdateNameTags(newValue);
         break;
       case "enableNoZoom":
         handleUpdateNoZoom(newValue);

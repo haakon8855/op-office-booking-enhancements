@@ -9,6 +9,9 @@ const sliderKeybinds = document.getElementById("sliderElemKeybinds");
 const toggleButtonLargeMap = document.getElementById("toggleLargeMap");
 const sliderLargeMap = document.getElementById("sliderElemLargeMap");
 
+const toggleButtonNameTags = document.getElementById("toggleEnableNameTags");
+const sliderNameTags = document.getElementById("sliderElemNameTags");
+
 const toggleButtonNoZoom = document.getElementById("toggleNoZoom");
 const sliderNoZoom = document.getElementById("sliderElemNoZoom");
 
@@ -27,6 +30,11 @@ const updateSliderLargeMap = (enableLargeMap) => {
   toggleButtonLargeMap.checked = enableLargeMap;
 };
 
+const updateSliderNameTags = (enableNameTags) => {
+  // Update the state of the name tag slider button
+  toggleButtonNameTags.checked = enableNameTags;
+};
+
 const updateSliderNoZoom = (enableNoZoom) => {
   // Update the state of the no zoom slider button
   toggleButtonNoZoom.checked = enableNoZoom;
@@ -42,6 +50,9 @@ browser.storage.sync.get("enableKeybinds", ({ enableKeybinds }) => {
 browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
   updateSliderLargeMap(enableLargeMap);
 });
+browser.storage.sync.get("enableNameTags", ({ enableNameTags }) => {
+  updateSliderNameTags(enableNameTags);
+});
 browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
   updateSliderNoZoom(enableNoZoom);
 });
@@ -53,6 +64,7 @@ setTimeout(() => {
   sliderDefaultDay.classList.add("sliderAnim");
   sliderKeybinds.classList.add("sliderAnim");
   sliderLargeMap.classList.add("sliderAnim");
+  sliderNameTags.classList.add("sliderAnim");
   sliderNoZoom.classList.add("sliderAnim");
 }, 100);
 
@@ -77,6 +89,13 @@ toggleButtonLargeMap.addEventListener("click", async () => {
     enableLargeMap = !enableLargeMap;
     browser.storage.sync.set({ enableLargeMap });
     updateSliderLargeMap(enableLargeMap);
+  });
+});
+toggleButtonNameTags.addEventListener("click", async () => {
+  browser.storage.sync.get("enableNameTags", ({ enableNameTags }) => {
+    enableNameTags = !enableNameTags;
+    browser.storage.sync.set({ enableNameTags });
+    updateSliderNameTags(enableNameTags);
   });
 });
 toggleButtonNoZoom.addEventListener("click", async () => {
