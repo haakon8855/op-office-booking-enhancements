@@ -1,9 +1,10 @@
-# OP Office Booking Enhancement Suite <!-- omit in toc -->
+# OP Office Booking Enhancements <!-- omit in toc -->
 
 - [Description](#description)
+  - [File structure](#file-structure)
 - [Download and Installation](#download-and-installation)
-  - [Chromium](#chromium)
   - [Firefox](#firefox)
+  - [Chromium](#chromium)
 - [Usage](#usage)
   - [Basic use](#basic-use)
   - [Extension menu](#extension-menu)
@@ -12,11 +13,13 @@
 
 ## Description
 
-This browser extension add quality of life changes to the Omegapoint Office Booking site.
-This is achieved by injecting JavaScript into the webpage.
+This browser extension adds some quality of life changes to the Omegapoint Office Booking site.
+This is achieved by just injecting JavaScript into the webpage.
 
-The extension is written for Chromium (manifest v3) and Firefox (manifest v2),
-and the file structure is as follows:
+The extension is written for Firefox (manifest v2), and has an older version with fewer features
+for Chromium browsers (manifest v3).
+
+### File structure
 
 ```text
 op-office-booking-screen-enhancement-suite/
@@ -27,9 +30,11 @@ op-office-booking-screen-enhancement-suite/
 │   ├── icon128.png
 │   └── thumbnail.png
 ├── enhancements/
-│   └── applyNoZoom.js ........... Disable zoom and show whole office at once
-│   └── applyLargeMap.js ......... Increase size of the office map
 │   └── applyDefaultDay.js ....... Set default day to next workday
+│   └── applyKeybinds.js ......... Add keyboard hotkeys for dialog navigation
+│   └── applyLargeMap.js ......... Increase size of the office map
+│   └── applyNameTags.js ......... Show name tags next to booked spots
+│   └── applyNoZoom.js ........... Disable zoom and show whole office at once
 ├── background.js ................ Runs when extension is installed
 ├── button.css ................... Styling of extension menu
 ├── inject.js .................... Code used to inject applyNoZoom.js and applyDefaultDay.js
@@ -42,15 +47,24 @@ op-office-booking-screen-enhancement-suite/
 
 ## Download and Installation
 
-__Disclaimer:__ This extension is not verified by the Chrome Web Store or Firefox Addons,
-continue at your own risk.
+__Disclaimer:__ This extension is not verified by the Chrome Web Store. To run this extension in
+Chromium browsers, developer mode must be enabled.
+Continue at your own risk.
 
 The extension can be downloaded from the
 [releases page](https://github.com/haakon8855/op-office-booking-enhancement-suite/releases/).
 
+### Firefox
+
+__Important:__ If you want to develop the firefox version of the extension or load the extension unpacked, you will need to have either Firefox Dev Edition or Firefox Nightly.
+
+1. Download the .xpi file containing the extension via the link above
+2. If you did so in Firefox, it should ask for installation permission
+3. If not, you can download it manually and drag the file into firefox and it should install.
+
 ### Chromium
 
-1. Download the .zip containing the extension via the link below
+1. Download the .zip containing the extension via the link above
 2. Extract the zipped extension to any folder
 3. Open Google Chrome and click on the extensions menu in the upper right (puzzle piece button)
 4. At the bottom, click on _Manage extensions_
@@ -59,19 +73,6 @@ The extension can be downloaded from the
 6. Click on _Load unpacked_ at the top and navigate to the location you extracted the extension to.
 7. Finally, select the folder containing `manifest.json` (most likely the folder named
    `op-office-booking-enhancement-suite`) to install the extension.
-
-### Firefox
-
-__Important:__ To load custom extension in Firefox, you will need to have either
-Firefox Dev Edition or Firefox Nightly.
-
-1. Download the .zip containing the extension via the link below
-2. Open Firefox (Nightly or Dev) and enter `about:config` in the URL field.
-3. Search for `xpinstall.signatures.required` and set it to `false`. This enables you to install
-   unverified extensions.
-4. Navigate to `about:addons` and drag-and-drop the zipped extension into the addons menu.
-   You shold be prompted with a box asking you to verify if you want to continue the installation
-   or not. When you click allow, you are good to go.
 
 ## Usage
 
@@ -89,10 +90,12 @@ nothing will happen when opening the office booking website.
 
 ### Enhancements
 
+- __Default to next workday:__ Automatically select the next workday when loading the page.
+- __Keybinds:__ Adds a few keybinds to navigate dialogs easier. Esc to close and space to confirm dialogs.
+- __Larger map:__ Makes the office map a little larger. (May be unstable on smaller screens)
+- __Name tags:__ Adds name tags next to booked spots so you can check who are coming in to the office tomorrow! (This one has a few bugs)
 - __Disable zooming:__ Disables the zoom functionality and shows all available seats in the
   office at once.
-- __Larger map:__ Makes the office map a little larger. (May be unstable on smaller screens)
-- __Default to next workday:__ Automatically select the next workday when loading the page.
 
 ## Notes
 
