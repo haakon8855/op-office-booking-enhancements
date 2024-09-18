@@ -13,22 +13,6 @@ const injectScript = (file_path, tag) => {
   node.appendChild(script);
 };
 
-const handleUpdateNoZoom = (enableNoZoom) => {
-  if (enableNoZoom)
-    injectScript(
-      browser.runtime.getURL("/enhancements/applyNoZoom.js"),
-      "body"
-    );
-};
-
-const handleUpdateLargeMap = (enableLargeMap) => {
-  if (enableLargeMap)
-    injectScript(
-      browser.runtime.getURL("/enhancements/applyLargeMap.js"),
-      "body"
-    );
-};
-
 const handleUpdateDefaultDay = (enableDefaultDay) => {
   if (enableDefaultDay)
     injectScript(
@@ -45,34 +29,50 @@ const handleUpdateKeybinds = (enableKeybinds) => {
     );
 };
 
+const handleUpdateLargeMap = (enableLargeMap) => {
+  if (enableLargeMap)
+    injectScript(
+      browser.runtime.getURL("/enhancements/applyLargeMap.js"),
+      "body"
+    );
+};
+
+const handleUpdateNoZoom = (enableNoZoom) => {
+  if (enableNoZoom)
+    injectScript(
+      browser.runtime.getURL("/enhancements/applyNoZoom.js"),
+      "body"
+    );
+};
+
 // Set initial values on load
-browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
-  handleUpdateNoZoom(enableNoZoom);
-});
-browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
-  handleUpdateLargeMap(enableLargeMap);
-});
 browser.storage.sync.get("enableDefaultDay", ({ enableDefaultDay }) => {
   handleUpdateDefaultDay(enableDefaultDay);
 });
 browser.storage.sync.get("enableKeybinds", ({ enableKeybinds }) => {
   handleUpdateKeybinds(enableKeybinds);
 });
+browser.storage.sync.get("enableLargeMap", ({ enableLargeMap }) => {
+  handleUpdateLargeMap(enableLargeMap);
+});
+browser.storage.sync.get("enableNoZoom", ({ enableNoZoom }) => {
+  handleUpdateNoZoom(enableNoZoom);
+});
 
 browser.storage.onChanged.addListener(function (changes, namespace) {
   for (let [key, { _oldValue, newValue }] of Object.entries(changes)) {
     switch (key) {
-      case "enableNoZoom":
-        handleUpdateNoZoom(newValue);
-        break;
-      case "enableLargeMap":
-        handleUpdateLargeMap(newValue);
-        break;
       case "enableDefaultDay":
         handleUpdateDefaultDay(newValue);
         break;
       case "enableKeybinds":
         handleUpdateKeybinds(newValue);
+        break;
+      case "enableLargeMap":
+        handleUpdateLargeMap(newValue);
+        break;
+      case "enableNoZoom":
+        handleUpdateNoZoom(newValue);
         break;
       default:
         break;
